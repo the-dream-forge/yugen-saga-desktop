@@ -24,7 +24,7 @@
     }
   },
   "_repository": "https://github.com/the-dream-forge/yugen-saga-desktop",
-  "_xpublish": {
+  "_publish": {
     "_provider": "github",
     "_releaseType": "release"
   }
