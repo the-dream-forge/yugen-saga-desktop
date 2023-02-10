@@ -12,10 +12,12 @@ on:
 jobs:
   build_client:
     name: Build Client (${{ matrix.os }})
-    if: startsWith(github.ref, 'refs/tags/')
+    #if: startsWith(github.ref, 'refs/tags/')
     strategy:
       matrix:
-        os: [macos-latest,  windows-latest]
+        os: [custom-macos]
+        #os: [macos-latest,  windows-latest]
+
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout
