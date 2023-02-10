@@ -27,7 +27,8 @@ jobs:
       - name: NPM Install
         run: npm install
       - name: Add MacOS certs
-        if: matrix.os == 'macos-latest'
+        #if: matrix.os == 'macos-latest'
+        if: matrix.os == 'custom-macos'
         run: chmod +x add-macos-cert.sh && ./add-macos-cert.sh
         env:
           CERTIFICATE_OSX_APPLICATION: ${{ secrets.CERTIFICATE_OSX_APPLICATION }}
