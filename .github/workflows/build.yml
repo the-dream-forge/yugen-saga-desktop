@@ -31,12 +31,13 @@ jobs:
           fetch-depth: 1
           ref: gh-pages
           token: ${{ secrets.GH_CLIENT_REPO_PAT }}
+          path: game
       - name: PWD
         run: |
           pwd
           ls -la
       - name: Check the main repo
-        working-directory: yugen-saga-client
+        working-directory: game
         run: |
           pwd
           ls -la
