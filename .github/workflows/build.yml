@@ -25,6 +25,23 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@v3
       - name: NPM Install
+      - name: Fetch latest client
+        uses: actions/checkout@v3
+        with:
+          repository: the-dream-forge/yugen-saga-client
+          fetch-depth: 1
+          ref: gh-pages
+          token: ${{ secrets.GH_CLIENT_REPO_PAT }}
+      - name: PWD
+        run: |
+          pwd
+          ls -la
+      - name: Check the main repo
+        working-directory: yugen-saga-client
+        run: |
+          pwd
+          ls -la
+        path: my-tools
         run: npm install
       - name: Add MacOS certs
         #if: matrix.os == 'macos-latest'
