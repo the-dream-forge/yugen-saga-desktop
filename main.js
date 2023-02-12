@@ -2,6 +2,7 @@ var os = require("os");
 const { app, BrowserWindow, screen, Menu } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const path = require("path");
+const { dialog } = require("electron");
 
 const createWindow = () => {
   // Create the browser window.
@@ -15,10 +16,28 @@ const createWindow = () => {
       devTools: !app.isPackaged,
     },
   });
+  dialog.showMessageBox({ message: "Yugen Saga!" });
 
   // and load the index.html of the app.
   mainWindow.loadFile("game/index.html");
 };
+
+autoUpdater.on("checking-for-update", () => {
+  dialog.showMessageBox({ message: "Checking for update..." });
+});
+autoUpdater.on("update-available", (info) => {
+  dialog.showMessageBox({ message: "Update available." });
+});
+autoUpdater.on("update-not-available", (info) => {
+  dialog.showMessageBox({ message: "Update not available." });
+});
+autoUpdater.on("error", (err) => {
+  dialog.showMessageBox({ message: "Error in auto-updater. " + err });
+});
+
+autoUpdater.on("update-downloaded", (info) => {
+  dialog.showMessageBox({ message: "Update downloaded" });
+});
 
 app.whenReady().then(() => {
   createWindow();
