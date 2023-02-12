@@ -33,11 +33,21 @@ jobs:
         run: |
           pwd
           ls -la
+      - name: Set Versions
+        uses: actions/github-script@v4
+        id: set_version
+        with:
+          script: |
+            const tag = ${{ github.event.release.tag_name }}
+            const no_v = tag.replace('v', '')
+            core.setOutput('tag', tag)
+            core.setOutput('no-v', no_v)
+            core.setOutput('no-dash', no_dash)
       - name: Update package.json version
         #if: matrix.os == 'macos-latest'
         if: matrix.os == 'custom-macos'
         run: |
-          sed -i -e 's/"version": ".*"/"version": "${{ github.event.release.tag_name }}"/' package.json
+          sed -i -e 's/"version": ".*"/"version": "${{steps.set_version.outputs.no-v}}"/' package.json
       - name: Check the main repo
         working-directory: game
         run: |

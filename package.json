@@ -40,6 +40,7 @@
     "releaseType": "release",
     "repo": "yugen-saga-desktop",
     "owner": "the-dream-forge",
-    "host": "github.com"
+    "host": "github.com",
+    "vPrefixedTagName": true
   }
 }
