@@ -1,5 +1,7 @@
 {
   "name": "yugen-saga-desktop",
+
+  "productName": "Yugen Saga",
   "version": "1.0.0",
   "description": "Desktop Client for Yugen Saga",
   "main": "main.js",
@@ -20,13 +22,14 @@
   },
   "build": {
     "appId": "com.thedreamforge.yugensagadesktop",
+    "copyright": "Copyright © 2023 The Dream Forgem, LLC",
     "mac": {
       "category": "public.app-category.games"
     }
   },
-  "_repository": "https://github.com/the-dream-forge/yugen-saga-desktop",
-  "_publish": {
-    "_provider": "github",
-    "_releaseType": "release"
+  "repository": "https://github.com/the-dream-forge/yugen-saga-desktop",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
   }
 }
