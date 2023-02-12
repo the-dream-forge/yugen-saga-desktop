@@ -16,7 +16,6 @@ const createWindow = () => {
       devTools: !app.isPackaged,
     },
   });
-  dialog.showMessageBox({ message: "Yugen Saga!" });
 
   // and load the index.html of the app.
   mainWindow.loadFile("game/index.html");
@@ -37,6 +36,7 @@ autoUpdater.on("error", (err) => {
 
 autoUpdater.on("update-downloaded", (info) => {
   dialog.showMessageBox({ message: "Update downloaded" });
+  autoUpdater.quitAndInstall();
 });
 
 app.whenReady().then(() => {
