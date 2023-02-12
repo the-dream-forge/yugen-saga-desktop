@@ -2,12 +2,11 @@ name: CI
 
 on:
   workflow_dispatch:
-
-inputs:
-  version:
-    description: 'version'
-    required: true
-    default: '2023.0.0'
+    inputs:
+      version:
+        description: "version"
+        required: true
+        default: "2023.0.0"
 
 jobs:
   build_client:
