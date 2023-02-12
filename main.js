@@ -3,10 +3,6 @@ const { app, BrowserWindow, screen, Menu } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const path = require("path");
 
-autoUpdater.logger = log;
-autoUpdater.logger.transports.file.level = "info";
-log.info("App starting...");
-
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
