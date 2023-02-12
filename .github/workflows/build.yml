@@ -34,8 +34,10 @@ jobs:
           pwd
           ls -la
       - name: Update package.json version
+        #if: matrix.os == 'macos-latest'
+        if: matrix.os == 'custom-macos'
         run: |
-          jq '.version="${{ github.event.release.tag_name }}"' package.json
+          sed -i 's/"version": ".*"/"version": "${{ github.event.release.tag_name }}"/' package.json
       - name: Check the main repo
         working-directory: game
         run: |
