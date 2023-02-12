@@ -1,6 +1,6 @@
 var os = require("os");
 const { app, BrowserWindow, screen, Menu } = require("electron");
-const { autoUpdater, AppUpdater } = require("electron-updater");
+const { autoUpdater } = require("electron-updater");
 const path = require("path");
 
 const createWindow = () => {
@@ -12,13 +12,17 @@ const createWindow = () => {
     icon: "build/icon.png",
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      devTools: !app.isPackaged,
+      //devTools: !app.isPackaged,
     },
   });
 
   // and load the index.html of the app.
   mainWindow.loadFile("game/index.html");
 };
+
+app.on("ready", function () {
+  autoUpdater.checkForUpdatesAndNotify();
+});
 
 app.whenReady().then(() => {
   createWindow();
