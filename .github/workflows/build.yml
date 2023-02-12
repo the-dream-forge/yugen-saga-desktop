@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         # os: [custom-macos]
-        os: [macos-latest, windows-latest]
+        os: [macos-latest] #, windows-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -41,16 +41,11 @@ jobs:
       #   run: |
       #     powershell -Command "(gc package.json) -replace 'foo', 'bar' | Out-File -encoding ASCII package2.json"
       #     sed -i -e 's/"version": ".*"/"version": "${{inputs.version}}"/' package.json
-      - name: Check the main repo
-        working-directory: game
-        run: |
-          pwd
-          ls -la
       - name: NPM Install
         run: npm install
       - name: Add MacOS certs
-        #if: matrix.os == 'macos-latest'
-        if: matrix.os == 'custom-macos'
+        if: matrix.os == 'macos-latest'
+        #if: matrix.os == 'custom-macos'
         run: chmod +x add-macos-cert.sh && ./add-macos-cert.sh
         env:
           CERTIFICATE_OSX_APPLICATION: ${{ secrets.CERTIFICATE_OSX_APPLICATION }}
