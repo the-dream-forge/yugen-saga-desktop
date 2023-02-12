@@ -4,6 +4,8 @@ const { autoUpdater } = require("electron-updater");
 const path = require("path");
 const { dialog } = require("electron");
 
+autoUpdater.autoInstallOnAppQuit = true;
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -21,22 +23,23 @@ const createWindow = () => {
   mainWindow.loadFile("game/index.html");
 };
 
-autoUpdater.on("checking-for-update", () => {
-  dialog.showMessageBox({ message: "Checking for update..." });
-});
+// autoUpdater.on("checking-for-update", () => {
+//   dialog.showMessageBox({ message: "Checking for update..." });
+// });
 autoUpdater.on("update-available", (info) => {
   dialog.showMessageBox({ message: "Update available." });
 });
-autoUpdater.on("update-not-available", (info) => {
-  dialog.showMessageBox({ message: "Update not available." });
-});
+// autoUpdater.on("update-not-available", (info) => {
+//   dialog.showMessageBox({ message: "Update not available." });
+// });
 autoUpdater.on("error", (err) => {
   dialog.showMessageBox({ message: "Error in auto-updater. " + err });
 });
 
 autoUpdater.on("update-downloaded", (info) => {
-  dialog.showMessageBox({ message: "Update downloaded" });
-  autoUpdater.quitAndInstall();
+  dialog.showMessageBox({
+    message: "Update downloaded. Please relaunch Yugen Saga to update the client.",
+  });
 });
 
 app.whenReady().then(() => {
