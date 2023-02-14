@@ -29,7 +29,8 @@
       ]
     },
     "win": {
-      "target": ["portable"],
+      "target": "nsis",
+      "verifyUpdateCodeSignature": false,
       "publisherName": "The Dream Forge, LLC",
       "publish": [
         "github"
