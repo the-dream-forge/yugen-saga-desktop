@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.GH_CLIENT_REPO_PAT }}
           path: game
       - name: Update package.json version
-        if: matrix.os == 'macos-latest'
+        #if: matrix.os == 'macos-latest'
         if: matrix.os == 'custom-macos'
         run: |
           sed -i -e 's/"version": ".*"/"version": "${{inputs.version}}"/' package.json
