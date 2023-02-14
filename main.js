@@ -27,11 +27,11 @@ const createWindow = () => {
 
   Menu.setApplicationMenu(null);
 
-  //if (app.isPackaged) {
-  mainWindow.loadFile("updates/index.html");
-  //} else {
-  //  mainWindow.loadFile("game/index.html");
-  //}
+  if (app.isPackaged) {
+    mainWindow.loadFile("updates/index.html");
+  } else {
+    mainWindow.loadFile("game/index.html");
+  }
 };
 
 autoUpdater.on("checking-for-update", () => {
@@ -44,6 +44,7 @@ autoUpdater.on("update-available", (info) => {
 
 autoUpdater.on("update-not-available", (info) => {
   mainWindow.webContents.send("updateMessage", "Update not available.");
+  mainWindow.loadFile("game/index.html");
 });
 
 autoUpdater.on("error", (err) => {
