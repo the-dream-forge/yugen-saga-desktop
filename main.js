@@ -54,7 +54,7 @@ autoUpdater.on("error", (err) => {
 autoUpdater.on("download-progress", (progressObj) => {
   mainWindow.webContents.send(
     "updateMessage",
-    `Downloading update - ${progressObj.percent}% " (${progressObj.transferred}/${progressObj.total})`
+    `Downloading update - ${Math.floor(progressObj.percent)}%` //  " (${progressObj.transferred}/${progressObj.total})`
   );
 });
 
