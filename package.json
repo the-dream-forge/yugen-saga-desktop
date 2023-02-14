@@ -29,6 +29,8 @@
       ]
     },
     "win": {
+      "target": ["portable"],
+      "publisherName": "The Dream Forge, LLC",
       "publish": [
         "github"
       ]

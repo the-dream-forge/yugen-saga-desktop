@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yugen Saga</title>
+    <style type="text/css">
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, -apple-system-font, "Segoe UI",
+          "Roboto", sans-serif;
+      }
+
+      #container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background: #61714d;
+      }
+
+      #message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+
+  <body id="main">
+    <div id="container">
+      <div id="message">status</div>
+    </div>
+
+    <script>
+      require("./renderer.js");
+    </script>
+  </body>
+</html>
