@@ -14,8 +14,8 @@ jobs:
     #if: startsWith(github.ref, 'refs/tags/')
     strategy:
       matrix:
-        os: [custom-macos, windows-latest]
-        #os: [macos-latest, windows-latest]
+        #os: [custom-macos, windows-latest]
+        os: [macos-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -32,8 +32,8 @@ jobs:
           token: ${{ secrets.GH_CLIENT_REPO_PAT }}
           path: game
       - name: Update package.json version
-        #if: matrix.os == 'macos-latest'
-        if: matrix.os == 'custom-macos'
+        if: matrix.os == 'macos-latest'
+        #if: matrix.os == 'custom-macos'
         run: |
           sed -i -e 's/"version": ".*"/"version": "${{inputs.version}}"/' package.json
       - name: Update package.json version
@@ -43,8 +43,8 @@ jobs:
       - name: NPM Install
         run: npm install
       - name: Add MacOS certs
-        #if: matrix.os == 'macos-latest'
-        if: matrix.os == 'custom-macos'
+        if: matrix.os == 'macos-latest'
+        #if: matrix.os == 'custom-macos'
         run: chmod +x add-macos-cert.sh && ./add-macos-cert.sh
         env:
           CERTIFICATE_OSX_APPLICATION: ${{ secrets.CERTIFICATE_OSX_APPLICATION }}
