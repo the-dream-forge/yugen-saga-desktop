@@ -2,7 +2,7 @@ var os = require("os");
 const { app, BrowserWindow, screen, Menu } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const path = require("path");
-const { dialog } = require("electron");
+const { dialog, shell } = require("electron");
 
 autoUpdater.autoInstallOnAppQuit = true;
 
@@ -32,6 +32,11 @@ const createWindow = () => {
   } else {
     mainWindow.loadFile("game/index.html");
   }
+
+  mainWindow.webContents.on("new-window", function(e, url) {
+    e.preventDefault();
+    shell.openExternal(url);
+  });
 };
 
 autoUpdater.on("checking-for-update", () => {
