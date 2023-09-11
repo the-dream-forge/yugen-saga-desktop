@@ -1,8 +1,10 @@
 var os = require("os");
 const { app, BrowserWindow, screen, Menu } = require("electron");
 const { autoUpdater } = require("electron-updater");
+const electronLocalshortcut = require('electron-localshortcut');
 const path = require("path");
 const { dialog, shell } = require("electron");
+const { electron } = require("process");
 
 autoUpdater.autoInstallOnAppQuit = true;
 
@@ -36,6 +38,14 @@ const createWindow = () => {
   mainWindow.webContents.on("new-window", function(e, url) {
     e.preventDefault();
     shell.openExternal(url);
+  });
+
+  electronLocalshortcut.register(mainWindow, 'F11', () => {
+    mainWindow.setFullScreen(!mainWindow.isFullScreen());
+  });
+
+  electronLocalshortcut.register(mainWindow, 'Escape', () => {
+    mainWindow.setFullScreen(false);
   });
 };
 
