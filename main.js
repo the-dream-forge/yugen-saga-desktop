@@ -40,12 +40,9 @@ const createWindow = () => {
     shell.openExternal(url);
   });
 
+  // Toggle Full Screen Mode
   electronLocalshortcut.register(mainWindow, 'F11', () => {
     mainWindow.setFullScreen(!mainWindow.isFullScreen());
-  });
-
-  electronLocalshortcut.register(mainWindow, 'Escape', () => {
-    mainWindow.setFullScreen(false);
   });
 };
 
