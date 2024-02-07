@@ -37,9 +37,9 @@ jobs:
         run: |
           sed -i -e 's/"version": ".*"/"version": "${{inputs.version}}"/' package.json
       - name: Update package.json version
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows-latest-disable'
         run: |
-          powershell -Command "(Get-Content package.json) -replace '\"version\": \"[^\"]*\"', '\"version\": \"${{ inputs.version }}\"' | Set-Content package.json"
+          powershell -Command "(Get-Content package.json) -replace '\"version\": \"1.0.0\"', '\"version\": \"${{ inputs.version }}\"' | Set-Content package.json"
           Get-Content -Path package.json
       - name: NPM Install
         run: npm install
