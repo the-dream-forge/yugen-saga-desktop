@@ -39,7 +39,7 @@ jobs:
       - name: Update package.json version
         if: matrix.os == 'windows-latest'
         run: |
-          powershell -Command "(gc package.json) -replace '\`"version\`": \`"1.0.0\`"', '\`"version\`": \`"${{inputs.version}}\`"' | Out-File -encoding ASCII package.json"
+          powershell -Command "(gc package.json) -replace '\`"version\`": \`"1.0.0\`"', '`"version`": `"${{inputs.version}}`"' | Out-File -encoding ASCII package.json"
           Get-Content -Path package.json
       - name: NPM Install
         run: npm install
