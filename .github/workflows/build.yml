@@ -37,7 +37,7 @@ jobs:
         run: |
           sed -i -e 's/"version": ".*"/"version": "${{inputs.version}}"/' package.json
       - name: Update package.json version
-        if: matrix.os == 'windows-latest-disable'
+        if: matrix.os == 'windows-latest'
         run: |
           powershell -Command "(Get-Content package.json) -replace '\"version\": \"1.0.0\"', '\"version\": \"${{ inputs.version }}\"' | Set-Content package.json"
           Get-Content -Path package.json
