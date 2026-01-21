@@ -8,6 +8,8 @@ const { electron } = require("process");
 
 autoUpdater.autoInstallOnAppQuit = true;
 
+app.commandLine.appendSwitch("disable-frame-rate-limit");
+
 let mainWindow;
 
 const gotTheLock = app.requestSingleInstanceLock();
